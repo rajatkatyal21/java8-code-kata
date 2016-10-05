@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -82,8 +83,8 @@ public class Exercise3Test {
          * Create a {@link LocalDate} and a {@link LocalTime} from {@link ldt}
          * by using {@link LocalDateTime#toLocalDate} and {@link LocalDateTime#toLocalTime}
          */
-        LocalDate localDate = null;
-        LocalTime localTime = null;
+        LocalDate localDate = ldt.toLocalDate();
+        LocalTime localTime = ldt.toLocalTime();
 
         assertThat(localDate.toString(), is("2015-06-18"));
         assertThat(localTime.toString(), is("23:07:30.500"));
@@ -98,8 +99,8 @@ public class Exercise3Test {
          * Create two equal {@link LocalDateTime} from {@link ld} and {@link lt}
          * by using {@link LocalDate#atTime} and {@link LocalTime#atDate}
          */
-        LocalDateTime localDateTime1 = null;
-        LocalDateTime localDateTime2 = null;
+        LocalDateTime localDateTime1 = ld.atTime(lt);
+        LocalDateTime localDateTime2 = lt.atDate(ld);
 
         assertThat(localDateTime1.toString(), is("2015-06-18T23:07:30.500"));
         assertThat(localDateTime1.isEqual(localDateTime2), is(true));
